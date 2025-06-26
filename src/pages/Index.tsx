@@ -1,8 +1,8 @@
 
-import HealthGoalSelector from '@/components/HealthGoalSelector';
+import HomePage from '@/components/HomePage';
 
 const Index = () => {
-  return <HealthGoalSelector />;
+  return <HomePage />;
 };
 
 export default Index;
