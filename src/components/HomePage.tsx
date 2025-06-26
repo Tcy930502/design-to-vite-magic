@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight, CheckCircle, Brain, Pill, ShoppingCart, Sparkles, Users, Shield, Clock } from 'lucide-react';
+import { ArrowRight, CheckCircle, Brain, Pill, ShoppingCart, Sparkles, Users, Shield, Clock, LogIn } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -70,45 +70,74 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-blue-50">
+    <div className="min-h-screen bg-slate-50">
+      {/* Navigation Header */}
+      <header className="bg-white shadow-sm border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
+            <div className="flex items-center">
+              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">H</span>
+              </div>
+              <span className="ml-2 text-xl font-semibold text-gray-900">HealthCare</span>
+            </div>
+            
+            {/* Navigation */}
+            <nav className="flex items-center space-x-8">
+              <a href="/" className="text-blue-600 font-medium">首頁</a>
+              <Button 
+                onClick={handleStartAssessment}
+                variant="ghost" 
+                className="text-gray-700 hover:text-blue-600"
+              >
+                免費評估
+              </Button>
+              <Button variant="ghost" size="icon" className="text-gray-700 hover:text-blue-600">
+                <ShoppingCart className="w-5 h-5" />
+              </Button>
+              <Button variant="ghost" className="text-gray-700 hover:text-blue-600">
+                <LogIn className="w-4 h-4 mr-2" />
+                登入
+              </Button>
+            </nav>
+          </div>
+        </div>
+      </header>
+
       {/* Hero Section */}
-      <section className="relative px-4 py-16 md:py-24 bg-gradient-to-r from-indigo-400 via-purple-400 to-blue-400 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/5"></div>
-        <div className="relative max-w-6xl mx-auto text-center">
+      <section className="relative px-4 py-16 md:py-24 bg-blue-600 text-white overflow-hidden">
+        <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
             為你的健康量身推薦
-            <span className="block text-indigo-100">保健食品</span>
+            <span className="block text-blue-100">保健食品</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-purple-100 max-w-3xl mx-auto animate-fade-in" style={{animationDelay: '0.2s'}}>
+          <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto animate-fade-in" style={{animationDelay: '0.2s'}}>
             只需 3 分鐘，完成健康問卷，獲得專屬營養建議
           </p>
           <Button 
             onClick={handleStartAssessment}
             size="lg"
-            className="bg-white text-indigo-600 hover:bg-indigo-50 text-lg px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-fade-in"
+            className="bg-white text-blue-600 hover:bg-blue-50 text-lg px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-fade-in"
             style={{animationDelay: '0.4s'}}
           >
             👉 立即免費評估
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
         </div>
-        
-        {/* Decorative Elements */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
-        <div className="absolute bottom-20 right-10 w-32 h-32 bg-purple-300/20 rounded-full blur-2xl"></div>
       </section>
 
       {/* Process Steps */}
-      <section className="py-16 px-4">
+      <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
             簡單四步驟，找到最適合的保健方案
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {processSteps.map((step, index) => (
-              <Card key={index} className="text-center border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in bg-white/70 backdrop-blur-sm" style={{animationDelay: `${index * 0.1}s`}}>
+              <Card key={index} className="text-center border-none shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in" style={{animationDelay: `${index * 0.1}s`}}>
                 <CardContent className="p-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                     <step.icon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="font-semibold text-lg text-gray-800 mb-2">{step.title}</h3>
@@ -121,7 +150,7 @@ const HomePage = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 px-4 bg-gradient-to-r from-indigo-50/80 to-purple-50/80 backdrop-blur-sm">
+      <section className="py-16 px-4 bg-slate-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
             為什麼選擇我們的健康評估？
@@ -129,7 +158,7 @@ const HomePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <div key={index} className="text-center animate-fade-in" style={{animationDelay: `${index * 0.2}s`}}>
-                <div className="w-20 h-20 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
                   <feature.icon className="w-10 h-10 text-white" />
                 </div>
                 <h3 className="font-semibold text-xl text-gray-800 mb-4">{feature.title}</h3>
@@ -141,17 +170,17 @@ const HomePage = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 px-4">
+      <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
             用戶真實回饋
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="border-none shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in bg-white/70 backdrop-blur-sm" style={{animationDelay: `${index * 0.15}s`}}>
+              <Card key={index} className="border-none shadow-lg hover:shadow-xl transition-all duration-300 animate-fade-in" style={{animationDelay: `${index * 0.15}s`}}>
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-indigo-300 to-purple-400 rounded-full flex items-center justify-center mr-4 text-xl">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 text-xl">
                       {testimonial.avatar}
                     </div>
                     <h4 className="font-semibold text-gray-800">{testimonial.name}</h4>
@@ -165,18 +194,18 @@ const HomePage = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 px-4 bg-gradient-to-r from-indigo-400 via-purple-400 to-blue-400 text-white">
+      <section className="py-16 px-4 bg-blue-600 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             開始您的健康之旅
           </h2>
-          <p className="text-xl mb-8 text-purple-100">
+          <p className="text-xl mb-8 text-blue-100">
             立即進行免費評估，讓 AI 為您推薦最適合的保健方案
           </p>
           <Button 
             onClick={handleStartAssessment}
             size="lg"
-            className="bg-white text-indigo-600 hover:bg-indigo-50 text-lg px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+            className="bg-white text-blue-600 hover:bg-blue-50 text-lg px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
           >
             👉 立即免費評估
             <ArrowRight className="ml-2 w-5 h-5" />
